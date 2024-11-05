@@ -1,8 +1,15 @@
 import { useState } from "react"
+import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
+import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
+import Checkbox from '@mui/material/Checkbox';
+
 
 function App() {
   const [tasks, setTasks]=useState([]);
   const [newTask, setNewTask]=useState("");
+  
 
   function handleInputChange(event){
     const task=event.target.value;
@@ -50,21 +57,21 @@ function App() {
 
         <button className="add-button"
                 onClick={addTask}>
-          Add
+          <AddIcon />
         </button>
       </div>
       <div>
         <ul>
           {tasks.map((task,index)=>
           <li key={index} >
-            <input type="checkbox" />
+            <Checkbox  color="success" />
             <span id={index} className="text" >{task}</span>
             <button className="delete-button"
-            onClick={()=>deleteTask(index)}>Delete</button>
+            onClick={()=>deleteTask(index)}><DeleteIcon /></button>
             <button className="move-button"
-            onClick={()=>moveUp(index)}>🢁</button>
+            onClick={()=>moveUp(index)}><ArrowCircleUpIcon /></button>
             <button className="move-button"
-            onClick={()=>moveDown(index)}>🢃</button>
+            onClick={()=>moveDown(index)}><ArrowCircleDownIcon /></button>
           </li>
           )}
         </ul>
